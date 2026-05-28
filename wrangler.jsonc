@@ -25,27 +25,33 @@
     "binding": "AI",
     "remote": true
   },
-  "analytics_engine_datasets": [
-    {
-      "binding": "ANALYTICS",
-      "dataset": "sink"
-    }
-  ],
+  // Analytics Engine disabled because account hasn't enabled it yet.
+  // To enable visit https://dash.cloudflare.com/?to=/:account/workers/analytics-engine
+  // "analytics_engine_datasets": [
+  //   {
+  //     "binding": "ANALYTICS",
+  //     "dataset": "sink"
+  //   }
+  // ],
   "kv_namespaces": [
     {
       "binding": "KV",
-      "preview_id": "ef93d42dc4b34969bab404d2e80f8dd3",
-      "id": "ef93d42dc4b34969bab404d2e80f8dd3" // IMPORTANT: Change this to your KV namespace ID
+      "preview_id": "05ff0c9e7035489fb67245575bed63bb",
+      "id": "05ff0c9e7035489fb67245575bed63bb"
     }
   ],
-  "r2_buckets": [
-    {
-      "binding": "R2",
-      "preview_bucket_name": "sink",
-      "bucket_name": "sink" // IMPORTANT: Change this to your R2 bucket name, or create one with `wrangler r2 bucket create sink`
-    }
-  ],
-  "triggers": {
-    "crons": ["0 0 * * *"] // Run backup task daily at 00:00 UTC
-  }
+  // R2 disabled because the deploy token lacks R2 permission.
+  // To enable backups, create an R2 bucket "sink" in dashboard and uncomment.
+  // "r2_buckets": [
+  //   {
+  //     "binding": "R2",
+  //     "preview_bucket_name": "sink",
+  //     "bucket_name": "sink"
+  //   }
+  // ],
+  // Cron disabled because account is at cron limit (5).
+  // Backups can be run manually if needed.
+  // "triggers": {
+  //   "crons": ["0 0 * * *"]
+  // }
 }
